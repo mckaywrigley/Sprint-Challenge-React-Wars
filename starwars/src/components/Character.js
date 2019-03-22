@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Character = props => {
+const Character = ({ char }) => {
     return (
         <div className="character">
-            char
+            <h2>{char.name}</h2>
         </div>
     )
 }

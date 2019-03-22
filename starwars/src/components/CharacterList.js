@@ -12,8 +12,14 @@ class CharacterList extends React.Component {
     render() {
         return (
             <div className="characterList">
-                list
-                <Character />
+                {this.props.characters.map(char => {
+                    return (
+                        <Character 
+                            key={char.created}
+                            char={char}
+                        />
+                    )
+                })}
             </div>
         )
     }
