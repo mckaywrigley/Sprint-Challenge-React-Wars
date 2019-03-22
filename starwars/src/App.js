@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <ReactAudioPlayer 
-          // preload="auto"
+          preload="auto"
           autoPlay
           src="https://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3"
           controls
