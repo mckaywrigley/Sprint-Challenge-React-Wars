@@ -6,7 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      starwarsChars: []
+      starwarsChars: [],
+      data: {}
     };
   }
 
@@ -23,22 +24,40 @@ class App extends Component {
         return res.json();
       })
       .then(data => {
-        this.setState({ starwarsChars: data.results });
+        this.setState({ 
+          starwarsChars: data.results,
+          data: data
+        });
       })
       .catch(err => {
         throw new Error(err);
       });
+
+      
   };
 
+
   render() {
+    console.log(this.state);
     return (
       <div className="App">
-        
-            {
-            <CharacterList 
-              characters={this.state.starwarsChars}
-            />
-            } 
+      <button
+        onClick={() => 
+          this.state.data.previous === null
+          ? alert('no previous page')
+          : this.getCharacters(this.state.data.previous)
+        }
+      >
+        Previous
+      </button>
+        <CharacterList 
+          characters={this.state.starwarsChars}
+        />
+        <button
+        onClick={() => this.getCharacters(this.state.data.next)}
+      >
+        Next
+      </button>
       </div>
     );
   }
